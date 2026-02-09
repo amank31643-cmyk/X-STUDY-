@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X STUDY MEGA LIBRARY</title>
+    <style>
+        body { background:#050c1a; color:white; font-family:sans-serif; margin:0; }
+        .header { background:#0a3d62; padding:15px; border-bottom:3px solid #d4af37; font-size:20px; font-weight:bold; }
+        .blackboard { background:#1e3d2f; border:6px solid #5d4037; border-radius:12px; margin:15px; padding:20px; min-height:100px; box-shadow:0 8px 15px rgba(0,0,0,0.5); }
+        
+        /* LIBRARY GRID */
+        .lib-grid { display:grid; grid-template-columns: 1fr 1fr; gap:12px; padding:15px; }
+        .lib-card { background:#0a3d62; border:2px solid #d4af37; border-radius:15px; padding:15px; transition:0.3s; }
+        .lib-card:active { background:#d4af37; color:black; transform:scale(0.95); }
+        .lib-card h4 { margin:5px 0; font-size:14px; }
+        
+        .footer-marq { background:#d4af37; color:black; padding:5px; font-weight:bold; position:fixed; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div class="header">📚 X-STUDY ALL-IN-ONE LIBRARY</div>
+
+<div class="blackboard">
+    <div id="boardMsg">Namaste Aman! <br> 9th se lekar IAS tak ki library taiyar hai.</div>
+</div>
+
+<div class="lib-grid">
+    <div class="lib-card" onclick="study('9th CLASS', 'UP Board & CBSE 9th Foundation Shuru!')">
+        <h3>📖</h3><h4>9th CLASS</h4>
+    </div>
+    <div class="lib-card" onclick="study('10th BOARD', '10th Class: Mission 95% Marks!')">
+        <h3>📚</h3><h4>10th CLASS</h4>
+    </div>
+    <div class="lib-card" onclick="study('COMPETITION', 'IAS, UPSC, SSC: All Exam Notes')">
+        <h3>🏛️</h3><h4>COMPETITION</h4>
+    </div>
+    <div class="lib-card" onclick="study('IAS SPECIAL', 'Dream LBSNAA: Mission 2035 Active!')">
+        <h3>🇮🇳</h3><h4>IAS SPECIAL</h4>
+    </div>
+</div>
+
+<div class="footer-marq">
+    <marquee scrollamount="8">🏎️ BMW M5 | 🏛️ LBSNAA | ✈️ PRIVATE JET | 🏠 LUXURY MANSION</marquee>
+</div>
+
+<script>
+    function study(title, msg) {
+        document.getElementById('boardMsg').innerHTML = "<b>" + title + "</b><br>" + msg;
+        window.speechSynthesis.cancel();
+        let s = new SpeechSynthesisUtterance(msg);
+        s.lang = 'hi-IN'; window.speechSynthesis.speak(s);
+    }
+</script>
+
+</body>
+</html>
+<div class="dashboard" style="margin-top:-20px;">
+    <div class="card-big" style="background: linear-gradient(145deg, #0a3d62, #1e3799); border: none;">
+        <h2 style="color: white;">🧠 DAILY AI CHALLENGE</h2>
+        <p id="quizText" style="font-size: 14px;">Q: Bharat ke pehle Law Minister kaun the?</p>
+        <button class="btn-mega" style="background: white; color: #0a3d62; padding: 10px; font-size: 14px;" onclick="checkAns()">Show Answer</button>
+    </div>
+
+    <div class="card-big">
+        <h2>⏳ BOARD EXAM 2026 COUNTDOWN</h2>
+        <div id="examClock" style="font-size: 20px; font-weight: bold; color: #ff4444; letter-spacing: 2px;">Loading Timer...</div>
+        <p style="font-size: 12px; margin-top: 5px;">Time is running out, Aman! Focus on 9th/10th</p>
+    </div>
+</div>
+
+<script>
+    // Smart Answer Function
+    function checkAns() {
+        document.getElementById('quizText').innerHTML = "<b>Answer: Dr. B.R. Ambedkar</b>";
+        let s = new SpeechSynthesisUtterance("Sahi jawab hai, Doctor B.R. Ambedkar.");
+        s.lang = 'hi-IN'; window.speechSynthesis.speak(s);
+    }
+
+    // Live Countdown Logic
+    function startCountdown() {
+        const examDate = new Date("March 1, 2026 09:00:00").getTime();
+        setInterval(function() {
+            let now = new Date().getTime();
+            let diff = examDate - now;
+            let days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("examClock").innerHTML = days + "d " + hours + "h Left";
+        }, 1000);
+    }
+    startCountdown();
+</script>
+
